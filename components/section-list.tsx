@@ -3,7 +3,7 @@ interface SectionListProps {
   className?: string;
   children?: React.ReactNode;
 }
-const SectionList = (props: SectionListProps) => {
+export const SectionList = (props: SectionListProps) => {
   const { title, children, className } = props;
   return (
     <div className={`[&>*]:block ${className}`}>
@@ -12,5 +12,3 @@ const SectionList = (props: SectionListProps) => {
     </div>
   );
 };
-
-export default SectionList;

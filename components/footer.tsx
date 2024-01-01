@@ -1,7 +1,7 @@
 import Link from "next/link";
-import SectionList from "./SectionList";
+import { SectionList } from "./section-list";
 
-const Footer = () => {
+export const Footer = () => {
   return (
     <div className="flex h-[40vh] w-screen bg-neutral-950 text-white">
       <div className="flex w-2/5 flex-col items-center justify-center">
@@ -41,5 +41,3 @@ const Footer = () => {
     </div>
   );
 };
-
-export default Footer;

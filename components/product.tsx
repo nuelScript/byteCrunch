@@ -1,4 +1,3 @@
-import React from "react";
 import Link from "next/link";
 import { TbCurrencyNaira } from "react-icons/tb";
 import Image from "next/image";

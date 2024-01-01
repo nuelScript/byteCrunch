@@ -1,4 +1,4 @@
-import Footer from "@/components/footer/footer";
+import Footer from "@/components/footer";
 
 export default async function ProductLayout({
   children,

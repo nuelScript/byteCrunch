@@ -1,7 +1,7 @@
 "use client";
 
 import { useRouter } from "next/navigation";
-import Heading from "./heading";
+import { Heading } from "./heading";
 import { Button } from "@/components/ui/button";
 
 interface EmptyState {
