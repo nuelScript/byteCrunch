@@ -16,6 +16,7 @@ model User {
   emailVerified DateTime?
   image         String?
   password      String?
+  matricNo      String?
   accounts      Account[]
 }
 

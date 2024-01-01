@@ -20,6 +20,7 @@
     "@sanity/image-url": "^1.0.2",
     "@sanity/vision": "^3.19.3",
     "axios": "^1.6.1",
+    "bcryptjs": "^2.4.3",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.0.0",
     "iconsax-react": "^0.0.8",
@@ -27,6 +28,7 @@
     "next": "^14.0.3",
     "next-auth": "^4.24.5",
     "next-sanity": "^5.5.10",
+    "node-gyp-build": "^4.7.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-hook-form": "^7.49.2",
@@ -40,6 +42,8 @@
     "zod": "^3.22.4"
   },
   "devDependencies": {
+    "@types/bcrypt": "^5.0.2",
+    "@types/bcryptjs": "^2.4.6",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
