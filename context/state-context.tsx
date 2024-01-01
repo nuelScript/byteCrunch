@@ -1,6 +1,6 @@
 "use client";
 
-import { Product } from "@/types/Product";
+import { Product } from "@/types/types";
 import React, { createContext, useContext, useState, ReactNode } from "react";
 import { toast } from "react-hot-toast";
 
