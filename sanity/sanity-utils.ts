@@ -1,9 +1,9 @@
-import { Product } from "@/types/Product";
+import { Product } from "@/types/types";
 import { createClient } from "@sanity/client";
 import { groq } from "next-sanity";
 import clientConfig from "./config/client-config";
-import { Banner } from "@/types/Banner";
-import { Vendor } from "@/types/Vendor";
+import { Banner } from "@/types/types";
+import { Vendor } from "@/types/types";
 
 export async function getProducts(): Promise<Product[]> {
   return createClient(clientConfig).fetch(

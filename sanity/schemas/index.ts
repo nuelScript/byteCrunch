@@ -1,6 +1,4 @@
-import product from "./product-schema";
-import banner from "./banner-schema";
-import vendor from "./vendor-schema";
+import { banner, product, vendor } from "./schemas";
 
 const schemas = [product, banner, vendor];
 

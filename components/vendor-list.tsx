@@ -1,5 +1,5 @@
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Vendor } from "@/types/Vendor";
+import { Vendor } from "@/types/types";
 import { Card, CardContent } from "@/components/ui/card";
 import Image from "next/image";
 import { TbCurrencyNaira } from "react-icons/tb";

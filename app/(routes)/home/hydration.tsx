@@ -3,9 +3,9 @@
 import HeroBanner from "@/components/banner";
 import ProductComponent from "@/components/product";
 import VendorComponent from "@/components/vendor";
-import { Banner } from "@/types/Banner";
-import { Product } from "@/types/Product";
-import { Vendor } from "@/types/Vendor";
+import { Banner } from "@/types/types";
+import { Product } from "@/types/types";
+import { Vendor } from "@/types/types";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 

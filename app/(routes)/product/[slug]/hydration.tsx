@@ -1,7 +1,7 @@
 "use client";
 
 import ProductComponent from "@/components/product";
-import { Product } from "@/types/Product";
+import { Product } from "@/types/types";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import { Star1 } from "iconsax-react";
