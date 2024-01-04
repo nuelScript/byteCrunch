@@ -1,3 +1,5 @@
+import { SignOutButton } from "@/components/auth/sign-out";
+
 export default async function HomeLayout({
   children,
 }: {

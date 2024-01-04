@@ -1,5 +1,6 @@
 "use client";
 
+import { SignOutButton } from "@/components/auth/sign-out";
 import HeroBanner from "@/components/banner";
 import ProductComponent from "@/components/product";
 import VendorComponent from "@/components/vendor";
