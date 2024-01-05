@@ -11,7 +11,7 @@ const LandingHydrationPage = () => {
 
   if (!isMounted) return null;
   return (
-    <div className="grid h-[100vh] w-full grid-cols-1 grid-rows-1 gap-2 overflow-x-hidden bg-[#FFE569] p-5 pt-10 md:grid-cols-2 md:gap-8 md:p-20 lg:pt-5">
+    <div className="grid h-[100vh] w-full grid-cols-1 grid-rows-1 gap-2 overflow-x-hidden bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-buttoncolor to-primarycolor2 p-5 pt-10 md:grid-cols-2 md:gap-8 md:p-20 lg:pt-5">
       <div className="flex flex-col  items-center justify-evenly text-center md:text-left">
         <h1 className="mb-6 text-4xl font-medium uppercase leading-snug text-white md:text-6xl">
           Launching soon
