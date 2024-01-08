@@ -16,7 +16,6 @@ interface BannerProps {
 }
 
 const HeroBanner = ({ banner }: BannerProps) => {
-  console.log(banner);
   return (
     <div className="w-full">
       <div className="flex w-full flex-row justify-between gap-8 bg-gradient-to-b from-[#FFF0AA] from-85% to-white p-6 ">

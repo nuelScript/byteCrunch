@@ -1,3 +1,15 @@
+import { User } from "@prisma/client";
+
+export type SafeUser = Omit<
+  User,
+  "createdAt" | "updatedAt" | "emailVerified" | "image"
+> & {
+  createdAt: string;
+  updatedAt: string;
+  emailVerified: string | null;
+  image: string;
+};
+
 export type Banner = {
   _id: string;
   _createdAt: Date;

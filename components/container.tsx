@@ -1,4 +1,5 @@
 "use client";
+import { cn } from "@/lib/utils";
 import React, { RefObject } from "react";
 interface ContainerProps {
   className?: string;
@@ -9,7 +10,7 @@ interface ContainerProps {
 const Container: React.FC<ContainerProps> = ({ children, className, ref }) => {
   return (
     <div
-      className={`mx-auto w-full px-4 sm:px-2 md:px-10 xl:px-20 ${className}`}
+      className={cn("mx-auto w-full px-4 sm:px-2 md:px-10 xl:px-20", className)}
       ref={ref}
     >
       {children}
