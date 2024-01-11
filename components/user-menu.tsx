@@ -8,11 +8,9 @@ import { signOut } from "next-auth/react";
 import { DEFAULT_LOGIN_REDIRECT } from "@/routes";
 import Image from "next/image";
 import { placeholder } from "@/public/images";
-import { useSession } from "next-auth/react";
-import { Session } from "next-auth/types";
 
 interface UserMenuProps {
-  currentUser?: Session;
+  currentUser?: SafeUser | null;
 }
 
 export const UserMenu = ({ currentUser }: UserMenuProps) => {
