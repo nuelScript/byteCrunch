@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
-import { Inter, Lexend_Deca } from "next/font/google";
+import { Lexend_Deca } from "next/font/google";
 import "./globals.css";
 import { Toaster } from "react-hot-toast";
 import { StateContext } from "@/context/state-context";
+import { SessionProvider } from "next-auth/react";
 
 const lexendDeca = Lexend_Deca({ subsets: ["latin"] });
 
@@ -17,13 +18,15 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
-      <body className={lexendDeca.className}>
-        <StateContext>
-          <Toaster />
-          {children}
-        </StateContext>
-      </body>
-    </html>
+    <SessionProvider>
+      <html lang="en">
+        <body className={lexendDeca.className}>
+          <StateContext>
+            <Toaster />
+            {children}
+          </StateContext>
+        </body>
+      </html>
+    </SessionProvider>
   );
 }

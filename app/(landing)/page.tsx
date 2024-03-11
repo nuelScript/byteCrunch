@@ -1,5 +1,5 @@
 import { Navbar } from "@/components/navbar";
-import LandingHydrationPage from "./landing";
+import { LandingHydrationPage } from "./landing";
 
 const LandingPage = () => {
   return (

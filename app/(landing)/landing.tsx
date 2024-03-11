@@ -2,8 +2,8 @@
 
 import { useEffect, useState } from "react";
 
-const LandingHydrationPage = () => {
-  const [isMounted, setIsMounted] = useState<boolean>(false);
+export const LandingHydrationPage = () => {
+  const [isMounted, setIsMounted] = useState(false);
 
   useEffect(() => {
     setIsMounted(true);
@@ -100,5 +100,3 @@ const LandingHydrationPage = () => {
     </div>
   );
 };
-
-export default LandingHydrationPage;

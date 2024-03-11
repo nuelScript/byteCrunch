@@ -1,6 +1,5 @@
 "use client";
 
-import { SafeUser } from "@/types/types";
 import { useState } from "react";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { MenuItem } from "@/components/menu-item";
@@ -8,19 +7,16 @@ import { signOut } from "next-auth/react";
 import { DEFAULT_LOGIN_REDIRECT } from "@/routes";
 import Image from "next/image";
 import { placeholder } from "@/public/images";
+import { useSession } from "next-auth/react";
 
-interface UserMenuProps {
-  currentUser?: SafeUser | null;
-}
-
-export const UserMenu = ({ currentUser }: UserMenuProps) => {
-  console.log(currentUser);
+export const UserMenu = () => {
+  const { data } = useSession();
   const [isOpen, setIsOpen] = useState(false);
   return (
     <div className="relative mx-4 flex flex-row items-center gap-10">
       <div className="hover:cursor-pointer" onClick={() => setIsOpen(true)}>
         <Avatar>
-          <AvatarImage src={currentUser?.image} />
+          <AvatarImage src={data?.user.image} />
           <AvatarFallback>
             <Image
               src={placeholder}
@@ -38,11 +34,11 @@ export const UserMenu = ({ currentUser }: UserMenuProps) => {
             onMouseLeave={() => setIsOpen(false)}
             className="flex flex-col items-center w-fit cursor-pointer"
           >
-            {currentUser ? (
+            {data?.user ? (
               <>
                 <MenuItem className="block md:hidden">
                   <Avatar>
-                    <AvatarImage src={currentUser?.image} />
+                    <AvatarImage src={data.user.image} />
                     <AvatarFallback>
                       <Image
                         src={placeholder}
