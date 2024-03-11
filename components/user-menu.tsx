@@ -16,7 +16,7 @@ export const UserMenu = () => {
     <div className="relative mx-4 flex flex-row items-center gap-10">
       <div className="hover:cursor-pointer" onClick={() => setIsOpen(true)}>
         <Avatar>
-          <AvatarImage src={data?.user.image} />
+          <AvatarImage src={data?.user.image ?? ""} />
           <AvatarFallback>
             <Image
               src={placeholder}
@@ -38,7 +38,7 @@ export const UserMenu = () => {
               <>
                 <MenuItem className="block md:hidden">
                   <Avatar>
-                    <AvatarImage src={data.user.image} />
+                    <AvatarImage src={data.user.image ?? ""} />
                     <AvatarFallback>
                       <Image
                         src={placeholder}
