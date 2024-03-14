@@ -5,9 +5,10 @@ import { Product } from "@/types/types";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import { Star1 } from "iconsax-react";
-import { useStateContext } from "@/context/state-context";
 import Quantity from "./quantity";
 import { TbCurrencyNaira } from "react-icons/tb";
+import useCart from "@/hooks/use-cart";
+import { useRouter } from "next/navigation";
 
 interface ProductionPagehydrationProps {
   product: Product;
@@ -20,7 +21,8 @@ export const ProductPageHydration = ({
 }: ProductionPagehydrationProps) => {
   const [index, setIndex] = useState<number>(0);
   const [isMounted, setIsMounted] = useState(false);
-  const { qty, onAdd } = useStateContext();
+  const { qty, addItem } = useCart();
+  const router = useRouter();
 
   useEffect(() => {
     setIsMounted(true);
@@ -50,8 +52,8 @@ export const ProductPageHydration = ({
                 onClick={() => setIndex(i)}
                 className={
                   i === index
-                    ? "h-[70px] w-[70px] scale-100 cursor-pointer rounded-lg bg-[#ebebeb] bg-cover hover:scale-110"
-                    : "h-[70px] w-[70px] cursor-pointer rounded-lg bg-[#ebebeb] bg-cover"
+                    ? "h-[70px] w-[70px] scale-100 cursor-pointer rounded-lg bg-[#ebebeb] bg-cover"
+                    : "h-[70px] w-[70px] cursor-pointer rounded-lg bg-[#ebebeb] bg-cover hover:scale-110"
                 }
                 width={500}
                 height={500}
@@ -82,13 +84,14 @@ export const ProductPageHydration = ({
             <button
               type="button"
               className="mt-10 w-[200px] scale-100 cursor-pointer border border-solid border-black bg-white px-5 py-3 text-lg font-medium text-black transition hover:scale-105 md:w-[150px]"
-              onClick={() => onAdd(product, qty)}
+              onClick={() => addItem(product, qty)}
             >
               Add to Cart
             </button>
             <button
               type="button"
               className="mt-10 w-[200px] scale-100 cursor-pointer border-none bg-[#F79327] px-5 py-3 text-lg font-medium text-white transition hover:scale-105 md:w-[150px]"
+              onClick={() => router.push("/cart")}
             >
               Order Now
             </button>

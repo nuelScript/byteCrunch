@@ -5,14 +5,16 @@ import { Logo } from "@/components/logo";
 import { UserMenu } from "./user-menu";
 import { Button } from "./ui/button";
 import { AiOutlineShoppingCart } from "react-icons/ai";
-import { useStateContext } from "@/context/state-context";
 import { useRouter } from "next/navigation";
 import { SessionProvider, useSession } from "next-auth/react";
+import useCart from "@/hooks/use-cart";
+import Link from "next/link";
 
 export const Navbar = () => {
   const { data } = useSession();
   const router = useRouter();
-  const { showCart, setShowCart, totalQuantity } = useStateContext();
+  const cart = useCart();
+  const { totalQuantity } = cart;
 
   const onCart = async () => {
     if (!data) {
@@ -29,18 +31,20 @@ export const Navbar = () => {
               <Logo />
               <div className="flex">
                 <UserMenu />
-                <div className="flex items-center" onClick={onCart}>
-                  <Button
-                    variant="ghost"
-                    size="icon"
-                    className="relative cursor-pointer border-none bg-transparent text-2xl text-gray-500 transition-transform hover:scale-110 rounded-full"
-                  >
-                    <AiOutlineShoppingCart className="flex" />
-                    <span className="absolute flex items-center justify-center -right-0 -top-0 h-[18px] w-[18px] rounded-full bg-red-500 text-center text-xs font-semibold text-white">
-                      {totalQuantity}
-                    </span>
-                  </Button>
-                </div>
+                <Link href="/cart">
+                  <div className="flex items-center" onClick={onCart}>
+                    <Button
+                      variant="ghost"
+                      size="icon"
+                      className="relative cursor-pointer border-none bg-transparent text-2xl text-gray-500 transition-transform hover:scale-110 rounded-full"
+                    >
+                      <AiOutlineShoppingCart className="flex" />
+                      <span className="absolute flex items-center justify-center -right-0 -top-0 h-[18px] w-[18px] rounded-full bg-red-500 text-center text-xs font-semibold text-white">
+                        {totalQuantity}
+                      </span>
+                    </Button>
+                  </div>
+                </Link>
               </div>
             </div>
           </Container>

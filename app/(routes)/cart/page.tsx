@@ -1,79 +1,58 @@
 "use client";
 
-import { useMemo, useRef, useState } from "react";
+import { useRef } from "react";
 import Container from "@/components/container";
-import { useStateContext } from "@/context/state-context";
 import { AiOutlineShopping } from "react-icons/ai";
 import Link from "next/link";
-import { toast } from "react-hot-toast";
 import { TbCurrencyNaira } from "react-icons/tb";
 import { MdOutlineCancel } from "react-icons/md";
 import Image from "next/image";
-
-// function CartPage() {
-//   const [orders, setOrders] = useState(getRandomOrders());
-
-//   const removeOrders = (index: number) => {
-//     setOrders((orders) => orders.filter((_, i) => i !== index));
-//   };
-//   const totalPrice = useMemo(
-//     () =>
-//       orders
-//         .map((order) => order.total * order.quantity)
-//         .reduce((a, b) => a + b, 0),
-//     [orders]
-//   );
-
-//   const deliveryFee = useMemo(() => Math.floor(Math.random() * 100) + 100, []);
-//   return (
-//     <Container className="my-8">
-//       <p className="my-4 text-xl font-semibold underline">Check Out</p>
-//       {orders.map((order, index) => (
-//         <CartCard
-//           key={order.product.name}
-//           order={order}
-//           removeOrder={() => removeOrders(index)}
-//         />
-//       ))}
-// <div className="flex flex-col items-end">
-//   <div className="[&>p]:w-48">
-//     <p className="my-1 flex  text-neutral-500">
-//       Total: <span className="ml-auto text-right">{totalPrice}</span>
-//     </p>
-//     <p className=" my-1 flex text-neutral-500">
-//       Delivery Fee:{" "}
-//       <span className="ml-auto text-right">{deliveryFee}</span>
-//     </p>
-//     <p className="my-4 flex text-xl font-semibold">
-//       Grand Total:
-//       <span className="ml-auto text-right">
-//         {totalPrice + deliveryFee}
-//       </span>
-//     </p>
-//   </div>
-// </div>
-//       <div className="w-full h-fit flex justify-center mt-16">
-//         <button type="button" className="p-3 py-3.5 w-[220px] font-bold text-white bg-buttoncolor rounded-2xl text-xl">Confirm Order</button>
-//       </div>
-//     </Container>
-//   );
-// }
-
-// export default CartPage;
+import useCart from "@/hooks/use-cart";
+import { Button } from "@/components/ui/button";
+import { Trash } from "lucide-react";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
 
 const CartPage = () => {
   const cartRef = useRef<HTMLDivElement>(null);
-  const { totalPrice, totalQuantity, cartItems, setShowCart, onRemove } =
-    useStateContext();
+  const cart = useCart();
+  const { totalPrice, totalQuantity, removeItem, removeAllItems, items } = cart;
 
   return (
     <Container className="my-8" ref={cartRef}>
-      <p className="my-4 inline-block text-xl font-semibold underline">
-        Check Out
-      </p>
-      <span className="ml-3 text-buttoncolor">({totalQuantity} items)</span>
+      <div className="flex justify-between items-center">
+        <div>
+          <p className="my-4 inline-block text-xl font-semibold underline">
+            Check Out
+          </p>
+          <span className="ml-3 text-buttoncolor">({totalQuantity} items)</span>
+        </div>
+        {items.length !== 0 && (
+          <TooltipProvider>
+            <Tooltip>
+              <TooltipTrigger asChild>
+                <Button
+                  variant="destructive"
+                  size="icon"
+                  onClick={removeAllItems}
+                  className="hover:bg-red-500/75"
+                >
+                  <Trash className="h-4 w-4" />
+                </Button>
+              </TooltipTrigger>
+              <TooltipContent className="bg-red-500 border-none text-white">
+                <p>Remove all Items</p>
+              </TooltipContent>
+            </Tooltip>
+          </TooltipProvider>
+        )}
+      </div>
 
-      {cartItems.length < 1 && (
+      {cart.items.length < 1 && (
         <div className="m-10 flex flex-col items-center text-center">
           <AiOutlineShopping className="text-center text-9xl text-black" />
           <h3 className="text-lg">Your Shopping Cart is Empty</h3>
@@ -89,8 +68,8 @@ const CartPage = () => {
       )}
 
       <div className="mt-4 max-h-[70vh] overflow-auto px-3 py-5">
-        {cartItems.length >= 1 &&
-          cartItems.map((item, index) => (
+        {cart.items.length >= 1 &&
+          cart.items.map((item) => (
             <div
               className="my-8 flex items-center border-b-2 border-dashed border-black py-4"
               key={item._id}
@@ -120,7 +99,7 @@ const CartPage = () => {
               </div>
               <div className="h-full w-1/5 ">
                 <MdOutlineCancel
-                  onClick={() => onRemove(item)}
+                  onClick={() => removeItem(item._id)}
                   className="mx-auto hover:cursor-pointer"
                   size={25}
                 />
@@ -128,7 +107,7 @@ const CartPage = () => {
             </div>
           ))}
       </div>
-      {cartItems.length >= 1 && (
+      {cart.items.length >= 1 && (
         <div className="flex flex-col items-end">
           <div className="[&>p]:w-48">
             <p className="my-1 flex  text-neutral-500">

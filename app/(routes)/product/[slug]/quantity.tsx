@@ -1,11 +1,11 @@
 "use client";
 
-import { useStateContext } from "@/context/state-context";
+import useCart from "@/hooks/use-cart";
 import React from "react";
 import { AiOutlineMinus, AiOutlinePlus } from "react-icons/ai";
 
 const Quantity = () => {
-  const { incQty, decQty, qty } = useStateContext();
+  const { incQty, decQty, qty } = useCart();
   return (
     <div className="mt-[10px] flex items-center gap-5">
       <h3>Quantity:</h3>

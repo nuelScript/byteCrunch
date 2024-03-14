@@ -34,6 +34,7 @@ export type Product = {
   details: string;
   price: number;
   size: string[];
+  quantity: number;
 };
 
 export type Vendor = {
