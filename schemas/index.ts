@@ -12,4 +12,8 @@ export const RegisterSchema = z.object({
   matricNo: z
     .string()
     .min(10, { message: "Minimum of 10 characters required." }),
+  telegramNo: z
+    .string()
+    .min(11, { message: "Minimum of 11 characters required." }),
+  roomNo: z.string({ required_error: "Room No is required" }),
 });

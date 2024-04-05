@@ -1,8 +1,7 @@
 // prisma/schema.prisma
 datasource db {
-  provider  = "postgresql"
-  url       = env("DATABASE_URL")
-  directUrl = env("DIRECT_URL")
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
 }
 
 generator client {
@@ -23,6 +22,8 @@ model User {
   password      String?
   matricNo      String?   @unique
   role          UserRole  @default(USER)
+  telegramNo    String?
+  roomNo        String?
   accounts      Account[]
 }
 

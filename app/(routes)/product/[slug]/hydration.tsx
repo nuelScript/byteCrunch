@@ -34,7 +34,7 @@ export const ProductPageHydration = ({
     <div>
       <div className="m-10 mt-[60px] flex gap-10 text-[#324d67]">
         <div>
-          <div className="">
+          <div>
             <Image
               src={product.image && product.image[index]}
               alt={product.details}
